@@ -2,10 +2,6 @@ from codecs import encode
 import os
 from statistics import mean
 
-def pdfLibSupport():
-    import pyPDF2 as pp
-
-
 class FileManager:
     def __init__(self, file_path):
         self.file_path = file_path
@@ -24,8 +20,10 @@ class FileManager:
         extension = split[-1]
         if extension == ".txt":
             self.META_extension = "TEXT"
-        elif extension == ".pdf":
-            self.META_extension = "PDF"
+        elif extension == ".xlsx":
+            self.META_extension = "EXCEL"
+        else:
+            self.META_extension = "incompatible"
 
 
 class KeyWord(FileManager):
@@ -60,8 +58,7 @@ class KeyWord(FileManager):
     def parseFile(self):
         if self.META_extension == "TEXT":
             self.parseTextFile()
-        elif self.META_extension == "PDF":
-            pdfLibSupport()
+        elif self.META_extension == "EXCEL":
             pass
 
     def frequencyDesity(self):
@@ -70,13 +67,11 @@ class KeyWord(FileManager):
                     if self.wordCount != 0:
                         self.densityTable[keyword] = self.frequencyTable[keyword] / self.wordCount
         
-            #print(self.densityTable)
             #taking the mean of word density for comparitive anlaysis
             meanDensity = mean(self.densityTable[value] for value in self.densityTable)
         except:
             meanDensity = 0
 
-        #print("Mean Frequency Density : ",meanDensity)
 
     def markAssessment(self):
         self.percentage = (self.hitCount/len(self.keylist))*100
@@ -92,8 +87,8 @@ class KeyWord(FileManager):
                 for word in line.split():
                     #parsing the word for potential mismatches
                     for char in self.parseChar:
-                        word = word.rstrip(char)
-                        word = word.lstrip(char)
+                        word = word.rstrip(char) #right side stripping
+                        word = word.lstrip(char) #left side stripping
                     if word in self.keylist:
                         if word in self.frequencyTable:
                             self.frequencyTable[word] += 1
