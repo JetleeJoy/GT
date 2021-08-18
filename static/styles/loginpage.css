@@ -1,0 +1,104 @@
+html{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100vh;
+}
+
+.login
+{
+    float:right;
+    margin-top:200px;
+    margin-right: 200px;
+}
+.inpt
+{
+    display:block;
+    width: 320px;
+    height:50px;
+    outline: none;
+    border:none;
+    outline: none;
+    background:none;
+    font-family: Source Sans pro;
+    font-weight: lighter;
+    font-size: 14px;
+    margin-bottom: 1px;
+    padding-left: 10px;
+    color:white;
+
+}
+.textbox
+{
+    border-bottom: 1px solid white;
+
+}
+::-webkit-input-placeholder
+{ 
+    color:white;
+    font-weight: 100;
+    
+
+}
+
+button
+{
+    width: 332px;
+    height:50px;
+    font-size: 16px;
+    background:none;
+    font-weight:lighter;
+    
+}
+.btn
+{
+    width: 332px;
+    height:50px;
+    font-size: 16px;
+    background:none;
+    font-weight:lighter;
+    
+    margin-top:15px;
+    border: 1px solid white;
+    color:white;
+}
+.btn:hover
+{
+    background:#f0f0f0;
+	cursor: pointer;
+	color:black;
+
+}
+
+a:link
+{
+    text-decoration:none;
+}
+a
+{
+    color:white;
+
+}
+ul
+{
+    font-weight: lighter;
+    font-size: 1em;
+    color:white;
+
+}
+
+.new
+{
+      margin-top: 100px;
+      color:white;
+}
+
+#usernamewarning,#passwordwarning
+{
+    color:white;
+}
+
+
+
+
+
