@@ -247,19 +247,28 @@ def savequestion(s1,s2,s3):
         #p=document.add_paragraph()
         #f.write("%d. %s [%d,%d]\n"%(questionnumber,s3[i][2],s3[i][0],s3[i][1]))
         questionnumber+=1
-    document.save('demo.docx')
+    document.save("E:\\Ravana\\workstation\\general\\Coronis\\GameOFThreads\\static\\"+'demo.docx')
     #f.close()
+    
+
+def deleteStaticFiles():
+    try:
+        for file in os.listdir("E:\\Ravana\\workstation\\general\\Coronis\\GameOFThreads\\static\\"):
+          os.remove("E:\\Ravana\\workstation\\general\\Coronis\\GameOFThreads\\static\\"+file)
+
+    except:
+        pass
     
 
 def acceptPath(filepath):
     fp = filepath
     #fp=input("Enter the full filepath to the questionbank file - use / when entering the filepath: ")
-    cwd = os.getcwd()
-    create_folder(cwd)
-    parent_dir =cwd
-    file= os.path.join(parent_dir,"demo.docx")
-    if os.path.exists(file):
-        delete_file(cwd)
+    # cwd = os.getcwd()
+    # create_folder(cwd)
+    # parent_dir =cwd
+    # file= os.path.join(parent_dir,"demo.docx")
+    # if os.path.exists(file):
+    #     delete_file(cwd)
 
     load_question_images(fp)
     trial1=SET_A(data=initialiase_section('section-a',fp),limit=5)
@@ -267,8 +276,8 @@ def acceptPath(filepath):
     trial3=SET_A(data=initialiase_section('section-c',fp),limit=5)
 
     savequestion(trial1.questions(),trial2.questions(),trial3.questions())
-    delete_folder(cwd)
-    print("/////////Running the script on the same directory will delete the previous word file//////////")
+    #delete_folder(cwd)
+    #print("/////////Running the script on the same directory will delete the previous word file//////////")
 
-file = "C:\\Users\\jetle\\Documents\\resource\\New_DBMS_QBankDBMS.xlsx"
-acceptPath(file)
+#file = ""C:\\Users\\jetle\\Desktop\\New_DBMS_QBankDBMS.xlsx""
+#acceptPath(file)

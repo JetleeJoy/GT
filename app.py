@@ -55,23 +55,27 @@ def download_excel_file():
     p = _FILE
     return send_file(p,as_attachment=True)
 
-
+_FILE2 = ""
 @app.route('/questionGenerator.html',methods=['GET', 'POST']) # redirecting url : answerAnalyzer.html
 def upload_qb():
+    qb.deleteStaticFiles()
     if request.method == 'POST':
         upload_questionbank = request.files['qb_file']
         if upload_questionbank.filename != '':
             filepath = os.path.join(app.config["UPLOAD_FOLDER"],upload_questionbank.filename)
             upload_questionbank.save(filepath)
-            filepath = r'filepath'
-            #_FILE = "C:\\Users\\jetle\\Desktop\\GT\\static\\New_DBMS_QBankDBMS.xlsx"
-            qb.acceptPath(filepath)
+            fpath = filepath.split("'\'")
+            qb.acceptPath(fpath[0])
             return render_template("qbresult.html")
     return render_template("qbgen.html")
 
 
 
-    return render_template("qbgen.html")
+@app.route('/qbresult')
+def download_qb_file():
+    p = "E:\Ravana\workstation\general\Coronis\GameOFThreads\static\demo.docx"
+    return send_file(p,as_attachment=True)
+
         
 @app.route('/plagarismCheck.html',methods=['GET', 'POST'])
 def plagarismCheck():
